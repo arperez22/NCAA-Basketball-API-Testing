@@ -1,1 +1,1 @@
-"# NCAA-Basketball-API-Testing" 
+# NCAA-Basketball-API-Testing
