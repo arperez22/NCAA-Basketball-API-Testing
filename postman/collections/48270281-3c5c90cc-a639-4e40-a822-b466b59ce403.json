@@ -1,0 +1,206 @@
+{
+	"info": {
+		"_postman_id": "48270281-3c5c90cc-a639-4e40-a822-b466b59ce403",
+		"name": "Basketball REST API Testing",
+		"description": "CRUD requests for testing the Basketball REST API's PlayerController class",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "PlayerRequests",
+			"item": [
+				{
+					"name": "Get Player By Id",
+					"id": "48270281-250411da-9548-41cb-bfff-05cc4bc0c358",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}players/89",
+							"host": [
+								"{{base_url}}{{api_version}}players"
+							],
+							"path": [
+								"89"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Search Players By Name",
+					"id": "48270281-27e8f0e1-fe0b-4052-a3ec-173790eb8cd6",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_version}}players/search?name=cook",
+							"host": [
+								"{{base_url}}{{api_version}}players"
+							],
+							"path": [
+								"search"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "cook"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Create Player",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "8b3c5970-dd8d-418b-8705-c2ecd205d474",
+								"exec": [
+									"pm.test(\"Successful POST request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48270281-3ed2ef7a-92cb-4e27-ad83-519ff6949082",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Arnoldo Perez-Chavez\",\n    \"jerseyNumber\": 47,\n    \"year\": \"SR\",\n    \"position\": \"C\",\n    \"height\": \"6-0\",\n    \"weight\": 180.0,\n    \"highSchool\": \"High School\",\n    \"hometown\": \"Town, Nebraska\",\n    \"teamId\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_version}}players",
+							"host": [
+								"{{base_url}}{{api_version}}players"
+							]
+						},
+						"description": "This is a POST request, submitting data to an API via the request body. This request submits JSON data, and the data is reflected in the response.\n\nA successful POST request typically returns a `200 OK` or `201 Created` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Update Player Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "eacd1078-0f5c-4167-9eda-a1d5374fc157",
+								"exec": [
+									"pm.test(\"Successful PUT request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 201, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48270281-8c5c6fdb-baab-4cd3-b9d8-b36b75a4e44e",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"name\": \"Arnoldo Perez-Chavez\",\n    \"jerseyNumber\": 37,\n    \"year\": \"SR\",\n    \"position\": \"F\",\n    \"height\": \"6-2\",\n    \"weight\": 190.0,\n    \"highSchool\": \"Other High School\",\n    \"hometown\": \"Village, Nebraska\",\n    \"teamId\": 9\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_version}}players/891",
+							"host": [
+								"{{base_url}}{{api_version}}players"
+							],
+							"path": [
+								"891"
+							]
+						},
+						"description": "This is a PUT request and it is used to overwrite an existing piece of data. For instance, after you create an entity with a POST request, you may want to modify that later. You can do that using a PUT request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful PUT request typically returns a `200 OK`, `201 Created`, or `204 No Content` response code."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Player Data",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"id": "65a0b3dd-02dd-47b7-a133-e54e7392731e",
+								"exec": [
+									"pm.test(\"Successful DELETE request\", function () {",
+									"    pm.expect(pm.response.code).to.be.oneOf([200, 202, 204]);",
+									"});",
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"id": "48270281-98a7c419-5665-43d3-9ebf-7ee62360c099",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_version}}players?id=891",
+							"host": [
+								"{{base_url}}{{api_version}}players"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "891"
+								}
+							]
+						},
+						"description": "This is a DELETE request, and it is used to delete data that was previously created via a POST request. You typically identify the entity being updated by including an identifier in the URL (eg. `id=1`).\n\nA successful DELETE request typically returns a `200 OK`, `202 Accepted`, or `204 No Content` response code."
+					},
+					"response": []
+				}
+			],
+			"id": "48270281-785e8ca0-46dd-418e-b116-e6bc6f276e6b"
+		}
+	]
+}
