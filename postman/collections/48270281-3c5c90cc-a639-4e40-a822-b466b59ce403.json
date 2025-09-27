@@ -200,7 +200,7 @@
 					"response": []
 				},
 				{
-					"name": "New Request",
+					"name": "Get Players",
 					"id": "48270281-eb94b65e-c475-4a7d-b73f-4481ebe34623",
 					"protocolProfileBehavior": {
 						"disableBodyPruning": true
